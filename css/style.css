@@ -12,7 +12,7 @@ body {
     height: 100vmin;
 }
 
-.boardGame {
+#boardGame {
     --cellSize: 20vmin;
     --cellGap: 2vmin;
     position: relative;
@@ -45,5 +45,14 @@ body {
     font-weight: bold;
     color: black;
     background-color: aliceblue;
+    transition: 100ms;
+    animation: show 200ms;
+}
+
+@keyframes show {
+    0% {
+       opacity: 0.5;
+        transform: scale(0);
+    }
 }
 
