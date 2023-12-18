@@ -20,26 +20,42 @@ function handleInput(event) {
             break;
 
         case "ArrowDown":
-            // moveDown();
+            moveDown();
             break;
 
         case "ArrowLeft":
-            // moveLeft();
+            moveLeft();
             break;
 
         case "ArrowRight":
-            // moveRight();
+            moveRight();
             break;
 
         default:
             setupInputOnce();
             return;
     }
+
+    const newTile = new Tile(gameBoard);
+    grid.getRandomEmptyCell().linkTile(newTile);
+
     setupInputOnce();
 }
 
 function moveUp() {
     slideTiles(grid.cellsGroupedByColumn);
+}
+
+function moveDown() {
+    slideTiles(grid.cellsGroupedByReversedColumn);
+}
+
+function moveLeft() {
+    slideTiles(grid.cellsGroupedByRow);
+}
+
+function moveRight() {
+    slideTiles(grid.cellsGroupedByReversedRow);
 }
 
 function slideTiles(groupedCells) {
@@ -51,7 +67,7 @@ function slideTiles(groupedCells) {
 }
 
 function slideTilesInGroup(group) {
-    for (let i=1; i<group.length; i++) {
+    for (let i = 1; i < group.length; i++) {
         if (group[i].isEmpty()) {
             continue;
         }
