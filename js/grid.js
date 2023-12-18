@@ -11,11 +11,20 @@ export class Grid {
                 new Cell(gridElement, i % gridSize, Math.floor(i / gridSize) )
             );
         }
+        this.cellsGroupedByColumn = this.groupCellsByColumn();
     }
 
     getRandomEmptyCell() {
         const emptyCells = this.cells.filter(cell => cell.isEmpty());
         const randomID = Math.floor(Math.random() * emptyCells.length);
         return emptyCells[randomID];
+    }
+
+    groupCellsByColumn() {
+        return this.cells.reduce((groupedCells, cell) => {
+            groupedCells[cell.x] = groupedCells[cell.x] || [];
+            groupedCells[cell.x][cell.y] = cell;
+            return groupedCells;
+        }, []);
     }
 }

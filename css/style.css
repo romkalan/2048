@@ -31,6 +31,8 @@ body {
 .tile {
     --y: 0;
     --x: 0;
+    --bgLightness: 0.1;
+    --textLightness: 0.1;
     position: absolute;
     top: calc(var(--y) * (var(--cellSize) + var(--cellGap)));
     left: calc(var(--x) * (var(--cellSize) + var(--cellGap)));
@@ -43,9 +45,8 @@ body {
     font-family: Monaco, Helvetica, sans-serif;
     font-size: 8vmin;
     font-weight: bold;
-    color: black;
-    background-color: hsl(25, 60%, var(--bgLigtness));
-    color: hsl(20, 25$, var(--textLigtness));
+    background-color: hsl(25, 60%, var(--bgLightness));
+    color: hsl(20, 25%, var(--textLightness));
     transition: 100ms;
     animation: show 200ms;
 }
